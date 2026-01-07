@@ -1,43 +1,43 @@
-# Software Design Document (SDD)
+# 📄 Software Design Document (SDD)
 
-## Project Title
-**Face Mask Detection using CNN Deep Learning**
+## 🧠 Project Title
+**Face Mask Detection using CNN Deep Learning 😷**
 
 ---
 
-## 1. Introduction
+## 1️⃣ Introduction
 
-### 1.1 Purpose
+### 1.1 🎯 Purpose
 The purpose of this Software Design Document (SDD) is to provide a comprehensive technical description of the design for the **Face Mask Detection using CNN Deep Learning** project.  
 This document explains the system architecture, data design, component design (CNN model), and implementation details required for development, testing, and maintenance.
 
 ---
 
-### 1.2 Scope
+### 1.2 🔍 Scope
 The primary scope of the system is to accurately classify an input image of a human face into one of two categories:
 
-- **With Mask**
-- **Without Mask**
+- 😷 **With Mask**
+- ❌ **Without Mask**
 
 The system is implemented using a deep learning model trained on a supervised image dataset.  
-The scope includes data acquisition, preprocessing, model definition, training, and evaluation.  
+The scope includes data acquisition, preprocessing, model definition, training, and evaluation.
 
-The system **does not include deployment** into a real-time application such as a web or mobile system.
+🚫 The system **does not include deployment** into a real-time application such as a web or mobile system.
 
 ---
 
-### 1.3 Definitions and Acronyms
+### 1.3 📘 Definitions and Acronyms
 
-#### Project Information
+#### 🧾 Project Information
 
 | Attribute | Value |
 |---------|-------|
-| Student Name | Laraib Qandeel |
-| Roll No | F22BINFT1E02142 |
-| Project Supervisor | Sir Syed Ali Nawaz Shah |
-| Date | January 6, 2026 |
+| 👩‍🎓 Student Name | Laraib Qandeel |
+| 🆔 Roll No | F22BINFT1E02142 |
+| 👨‍🏫 Project Supervisor | Sir Syed Ali Nawaz Shah |
+| 📅 Date | January 6, 2026 |
 
-#### Acronyms
+#### 📌 Acronyms
 
 | Acronym | Definition |
 |-------|-----------|
@@ -50,74 +50,74 @@ The system **does not include deployment** into a real-time application such as 
 
 ---
 
-## 2. System Architecture
+## 2️⃣ 🏗️ System Architecture
 
 The system follows a standard **Deep Learning pipeline architecture** and is divided into three main components:
 
-- Data Pipeline
-- Model Component
-- Evaluation Component
+- 📊 Data Pipeline  
+- 🧠 Model Component  
+- 📈 Evaluation Component  
 
 ---
 
-### 2.1 High-Level Design
+### 2.1 🧩 High-Level Design
 The system operates in a sequential manner:
 
-1. Data Acquisition: Raw image data is collected from a public dataset.
-2. Data Preprocessing: Images are cleaned, resized, and normalized.
-3. Model Training: The preprocessed data is used to train the CNN model.
-4. Model Evaluation: The trained model is evaluated using a test dataset.
+1. 📥 **Data Acquisition** – Raw image data is collected from a public dataset.  
+2. 🧹 **Data Preprocessing** – Images are cleaned, resized, and normalized.  
+3. 🧠 **Model Training** – The preprocessed data is used to train the CNN model.  
+4. ✅ **Model Evaluation** – The trained model is evaluated using a test dataset.  
 
 ---
 
-### 2.2 Component Diagram (Logical View)
+### 2.2 🗂️ Component Diagram (Logical View)
 
 The system is developed using Python and the TensorFlow/Keras framework.
 
 | Component | Technology / Library | Function |
 |---------|---------------------|---------|
-| Data Acquisition | Kaggle API, zipfile | Downloads and extracts dataset |
-| Data Preprocessing | OS, PIL, NumPy, Sklearn | Image loading, resizing, normalization, train-test split |
-| Model Component | TensorFlow / Keras | CNN model definition and training |
-| Evaluation Component | TensorFlow, Matplotlib | Accuracy and loss evaluation |
+| 📥 Data Acquisition | Kaggle API, zipfile | Downloads and extracts dataset |
+| 🧹 Data Preprocessing | OS, PIL, NumPy, Sklearn | Image loading, resizing, normalization, train-test split |
+| 🧠 Model Component | TensorFlow / Keras | CNN model definition and training |
+| 📈 Evaluation Component | TensorFlow, Matplotlib | Accuracy and loss evaluation |
 
 ---
 
-## 3. Data Design
+## 3️⃣ 📊 Data Design
 
-### 3.1 Dataset and Structure
+### 3.1 🗃️ Dataset and Structure
 The project uses the **Face Mask Dataset** obtained from Kaggle.
 
 | Attribute | Detail |
 |---------|--------|
-| Source | Kaggle (omkargurav/face-mask-dataset) |
-| Total Samples | ~7,553 images |
-| Classes | 2 |
-| Class 0 | Without Mask (3,828 images) |
-| Class 1 | With Mask (3,725 images) |
-| Split Ratio | Training: 80%, Testing: 20% |
+| 🌐 Source | Kaggle (omkargurav/face-mask-dataset) |
+| 📸 Total Samples | ~7,553 images |
+| 🧪 Classes | 2 |
+| ❌ Class 0 | Without Mask (3,828 images) |
+| 😷 Class 1 | With Mask (3,725 images) |
+| 🔀 Split Ratio | Training: 80%, Testing: 20% |
 
 ---
 
-### 3.2 Data Preprocessing Pipeline
+### 3.2 🔄 Data Preprocessing Pipeline
 The following preprocessing steps are applied:
 
-1. Image loading using PIL library  
-2. Resizing images to **128 × 128 pixels**  
-3. Conversion to RGB color format  
-4. Conversion to NumPy arrays with shape `(128, 128, 3)`  
-5. Normalization of pixel values from `0–255` to `0–1`  
-6. Train-test split (80:20)
+1. 🖼️ Image loading using PIL library  
+2. 📐 Resizing images to **128 × 128 pixels**  
+3. 🎨 Conversion to RGB color format  
+4. 🔢 Conversion to NumPy arrays with shape `(128, 128, 3)`  
+5. 📉 Normalization of pixel values from `0–255` to `0–1`  
+6. 🔀 Train-test split (80:20)  
 
 ---
 
-## 4. Component Design: CNN Model
+## 4️⃣ 🧠 Component Design: CNN Model
 
 The core component of the system is a **Convolutional Neural Network (CNN)** implemented using the Keras Sequential API.
 
 ---
 
-### 4.1 Model Architecture
+### 4.1 🧱 Model Architecture
 
 | Layer Type | Output Shape | Parameters | Activation | Purpose |
 |----------|--------------|------------|------------|---------|
@@ -134,7 +134,7 @@ The core component of the system is a **Convolutional Neural Network (CNN)** imp
 
 ---
 
-### 4.2 Model Configuration
+### 4.2 ⚙️ Model Configuration
 
 | Parameter | Value |
 |---------|------|
@@ -146,9 +146,9 @@ The core component of the system is a **Convolutional Neural Network (CNN)** imp
 
 ---
 
-## 5. Performance and Evaluation
+## 5️⃣ 📈 Performance and Evaluation
 
-### 5.1 Training Results
+### 5.1 📊 Training Results
 
 | Epoch | Training Accuracy | Validation Accuracy | Training Loss | Validation Loss |
 |------|------------------|--------------------|--------------|----------------|
@@ -160,36 +160,35 @@ The core component of the system is a **Convolutional Neural Network (CNN)** imp
 
 ---
 
-### 5.2 Final Test Evaluation
+### 5.2 ✅ Final Test Evaluation
 
 | Metric | Value |
 |------|------|
-| Test Accuracy | 92.19% |
+| Test Accuracy | **92.19%** |
 | Test Loss | 0.2121 |
 
 The high test accuracy demonstrates that the CNN model effectively classifies faces with and without masks.
 
 ---
 
-## 6. Non-Functional Requirements
+## 6️⃣ 🧩 Non-Functional Requirements
 
-### 6.1 Performance
+### 6.1 ⚡ Performance
 The system is designed for high accuracy and efficient computation.  
 The lightweight architecture allows future deployment on resource-constrained devices.
 
 ---
 
-### 6.2 Maintainability
-The system uses a modular CNN architecture built with Keras Sequential API, making it easy to understand, modify, and maintain.
+### 6.2 🛠️ Maintainability
+The system uses a modular CNN architecture built with the Keras Sequential API, making it easy to understand, modify, and maintain.
 
 ---
 
-### 6.3 Scalability
+### 6.3 📈 Scalability
 The architecture supports larger datasets and can utilize GPU/TPU acceleration for faster training.
 
 ---
 
-## References
-Kaggle Dataset: Face Mask Dataset – Omkar Gurav  
+## 📚 References
+🔗 Kaggle Dataset: Face Mask Dataset – Omkar Gurav  
 https://www.kaggle.com/datasets/omkargurav/face-mask-dataset
-
